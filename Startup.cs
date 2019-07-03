@@ -35,7 +35,7 @@ namespace mysql.demo
 
             //services.AddMvc();  
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.Add(new ServiceDescriptor(typeof(ActorContext), new ActorContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(DbContext), new DbContext(Configuration.GetConnectionString("DefaultConnection"))));
             
         }
 
@@ -63,6 +63,7 @@ namespace mysql.demo
                     name: "default",  
                     template: "{controller=Actor}/{action=Index}/{id?}");  
             });
+            // app.UseMvc();
         }
     }
 }
